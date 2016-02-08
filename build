@@ -30,7 +30,7 @@ function make_src {
 }
 
 function mkimage_bootscr {
-  mkimage -C none -A arm -T script -d ${SRC_DIR}/${BOOT_SCRIPT} ${SRC_DIR}/${BOOT_SCRIPT_IMG}
+  mkimage -C none -A arm -T script -d ${BOOT_SCRIPT} ${SRC_DIR}/${BOOT_SCRIPT_IMG}
 }
 
 function provide_output {
@@ -40,7 +40,7 @@ function provide_output {
   OUTPUT_FILE="${OUTPUT_PREFIX}_${OUTPUT_SUFFIX}"
 
   mkdir -p ${OUTPUT_DIR}
-  tar -czf ${OUTPUT_DIR}/${OUTPUT_FILE} -C ${SRC_DIR} ${FIRMWARE_IMG} #${BOOT_SCRIPT_IMG}
+  tar -czf ${OUTPUT_DIR}/${OUTPUT_FILE} -C ${SRC_DIR} ${FIRMWARE_IMG} ${BOOT_SCRIPT_IMG}
 }
 
 function build {
