@@ -29,6 +29,10 @@ function make_src {
   make -C ${SRC_DIR} -j$(nproc)
 }
 
+function mkimage_bootscr {
+  mkimage -C none -A arm -T script -d ${SRC_DIR}/${BOOT_SCRIPT} ${BOOT_SCRIPT_IMG}
+}
+
 function provide_output {
   OUTPUT_DIR="output"
   OUTPUT_PREFIX="$(git rev-parse --abbrev-ref HEAD)_$(date '+%Y%m%d%H%M%S')_$(git rev-parse --short HEAD)"
@@ -36,13 +40,14 @@ function provide_output {
   OUTPUT_FILE="${OUTPUT_PREFIX}_${OUTPUT_SUFFIX}"
 
   mkdir -p ${OUTPUT_DIR}
-  tar -czf ${OUTPUT_DIR}/${OUTPUT_FILE} -C ${SRC_DIR} ${FIRMWARE_IMG}
+  tar -czf ${OUTPUT_DIR}/${OUTPUT_FILE} -C ${SRC_DIR} ${FIRMWARE_IMG} ${BOOT_SCRIPT_IMG}
 }
 
 function build {
   dl_src
   make_defconfig
   make_src
+  mkimage_bootscr
   if [ "$(type -t pre_output)" == "function" ]
     then pre_output
   fi
