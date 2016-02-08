@@ -40,14 +40,14 @@ function provide_output {
   OUTPUT_FILE="${OUTPUT_PREFIX}_${OUTPUT_SUFFIX}"
 
   mkdir -p ${OUTPUT_DIR}
-  tar -czf ${OUTPUT_DIR}/${OUTPUT_FILE} -C ${SRC_DIR} ${FIRMWARE_IMG} ${BOOT_SCRIPT_IMG}
+  tar -czf ${OUTPUT_DIR}/${OUTPUT_FILE} -C ${SRC_DIR} ${FIRMWARE_IMG} #${BOOT_SCRIPT_IMG}
 }
 
 function build {
   dl_src
   make_defconfig
   make_src
-  mkimage_bootscr
+  #mkimage_bootscr
   if [ "$(type -t pre_output)" == "function" ]
     then pre_output
   fi
