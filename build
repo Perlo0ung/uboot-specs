@@ -9,6 +9,8 @@ UBOOT_VERSION="2016.01"
 UBOOT_CONFIG="rpi_b_config"
 SRC_DIR="src"
 FIRMWARE_IMG="u-boot.bin"
+BOOT_SCRIPT="boot_script.txt"
+BOOT_SCRIPT_IMG="boot.scr.uimg"
 
 #####################
 # Script            #
