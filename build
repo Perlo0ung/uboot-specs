@@ -47,7 +47,7 @@ function build {
   dl_src
   make_defconfig
   make_src
-  #mkimage_bootscr
+  mkimage_bootscr
   if [ "$(type -t pre_output)" == "function" ]
     then pre_output
   fi
