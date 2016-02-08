@@ -30,7 +30,7 @@ function make_src {
 }
 
 function mkimage_bootscr {
-  mkimage -C none -A arm -T script -d ${SRC_DIR}/${BOOT_SCRIPT} ${BOOT_SCRIPT_IMG}
+  mkimage -C none -A arm -T script -d ${SRC_DIR}/${BOOT_SCRIPT} ${SRC_DIR}/${BOOT_SCRIPT_IMG}
 }
 
 function provide_output {
